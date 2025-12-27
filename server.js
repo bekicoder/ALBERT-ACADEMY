@@ -15,7 +15,7 @@ const io = new Server(server, {
 
 const db=new Pool({
   host:"localhost",
-  user:"root",
+  user:"bekam",
   database:"albert_academy",
   password:"pass",
   port:5432
