@@ -12,12 +12,6 @@ const io = new Server(server, {
     origin: "*", // allow all devices on the network
   },
 });
-//const {Storage}=require("megajs")
-/*const mega=new Storage({
-  email:"girmamoloro17@outlook.com",
-  password:"@girma.mega_pass"
-})*/
-
 
 const db=new Pool({
   host:"localhost",
