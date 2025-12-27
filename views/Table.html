@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ethiopian Date Test</title>
+  <!-- Use ethiopian-calendar-date-converter CDN -->
+ <script
+  type="text/javascript"
+  src="https://unpkg.com/ethiopian-calendar-date-converter@2"
+></script>
+</head>
+<body>
+  <h1>Ethiopian Date Test</h1>
+  <p id="output"></p>
+
+  <script>
+    
+    // The library attaches a global object called "EthiopianDateConverter"
+    const { toEthiopian } = EthiopianDateConverter;
+alert("check")
+    // Test date: 2025-09-21
+    const testDate = new Date("2025-09-21");
+    const { year, month, date: day } = toEthiopian(
+      testDate.getFullYear(),
+      testDate.getMonth() + 1,
+      testDate.getDate()
+    );
+
+    document.getElementById("output").textContent =
+      `Gregorian: ${testDate.toDateString()} → Ethiopian: ${year}-${month}-${day}`;
+      
+  </script>
+</body>
+</html>

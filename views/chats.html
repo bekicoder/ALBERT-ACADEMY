@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body class="bg-[#f5f5f5] h-screen fixed top-0 bottom-0">
+  <div class="relative chat_wrapper h-full w-screen flex flex-col">
+
+    <ul class="chatContainer overflow-y-auto scroll-smooth  flex flex-1 flex-col items-end p-7 pb-32" id="chatContainer">
+      <li class="chat shadow-[0_0_7px] shadow-gray-300">gghh
+      hjj
+      guuhu
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.;
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.
+      hjj
+      guuhu
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.;
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.
+      Learn how to stop the browser from automatically scrolling to input fields when they are focused, improving user experience.</li>
+    </ul>
+  
+<div class="absolute bottom-4 w-screen flex justify-center z-30 px-2">
+  <div class="flex flex-row items-end gap-2 bg-white px-2 py-3 shadow-[0_0_10px_10px] shadow-gray-300 rounded-[30px] w-full max-w-4xl">
+    
+    <!-- Plus button -->
+    <button class="w-10 h-10 rounded-full text-white bg-black font-extrabold text-2xl flex items-center justify-center" onmousedown="event.preventDfault()" tabindex="-1">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+
+    <!-- Expandable textarea -->
+    <textarea id="message"
+      class="message flex-1 border border-gray-400 rounded-3xl resize-none focus:outline-none font-medium px-3 py-2 max-h-[120px] overflow-y-auto"
+      rows="1" placeholder="Type a message..."></textarea>
+
+    <!-- Send button -->
+    <button class="send_btn w-10 h-10 rounded-full text-white bg-black font-extrabold text-2xl flex items-center justify-center" tabindex="-1" onmousedown="event.preventDfault()">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+ </div>
+</div>
+
+  </div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+
+</body>
+</html>

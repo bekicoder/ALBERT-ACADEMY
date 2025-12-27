@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   <style>
+  body{
+    background-color:#f8f8f8;
+  }
+   </style>
+</head>
+<body class="bg-[">
+  <div class="flex flex-row pt-10 mb-10">
+  <h1 class="text-5xl font-extrabold mx-auto">School news</h1>
+  </div>
+  <div class="news_container w-[100vw] grid grid-cols-1  md:grid-cols-3 justify-start items-center  gap-7 md:justify-center md:items-start px-5">
+  </div>
+  
+  <script>
+    const container=document.querySelector(".news_container")
+    async function loadNews(){
+      const response=await fetch("/show_news")
+      const result=await response.json()
+      result.forEach(news=>{
+        const time=new Date(news.date)
+        // format date
+        
+   const day = time.toLocaleDateString("en-US", {
+    month: "short",  // "Sep"
+    day: "numeric",  // "21"
+    year: "numeric"  // "2025"
+  });
+  // shorten news 
+  let shortNews=news.news
+  if(news.news.length > 212){
+   shortNews= news.news.substring(0,212)
+  }
+        const div=document.createElement("div")
+        const date=document.createElement("small")
+        const News=document.createElement("p")
+        const heading=document.createElement("h1")
+        const more=document.createElement("strong")
+        div.classList.add(
+          "w-full", "max-w-[400px]","h-[250px]","md:h-[300px]","md:overflow-y-scroll","rounded-2xl", "p-4","flex", "flex-col","bg-white", "shadow-[0_2px_8px_rgba(0,0,0,0.2)]")
+        date.classList.add("font-medium")
+        more.classList.add("mt-auto","font-bold","text-blue-600")
+        heading.classList.add("text-xl","font-bold")
+        date.textContent=day
+        heading.textContent=news.heading
+        News.textContent=shortNews
+        more.textContent="Read more....."
+        let state=0
+        div.addEventListener('click',()=>{
+          if(state===0){
+          div.classList.remove("h-[250px]")
+          div.classList.add("h-fit")
+          more.textContent="Read less ^"
+          News.textContent=news.news
+          state=1
+          }else if(state===1){
+          div.classList.add("h-[250px]")
+          div.classList.remove("h-fit")
+          more.textContent="Read more...."
+          News.textContent=shortNews
+          state=0
+          }
+        })
+        div.appendChild(date)
+      div.appendChild(heading)
+        div.appendChild(News)
+        div.appendChild(more)
+       container.appendChild(div)
+        
+        
+      })
+        
+    }
+    loadNews()
+  </script>
+</body>
+</html>

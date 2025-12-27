@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+</head>
+<body>
+<section>
+<h1 class="text-4xl text-center font-extrabold bg-clip-text bg-gradient-to-br from-indigo-700 to-purple-600 text-transparent">Content management page</h1>
+</section>
+<section class="flex flex-col items-stretch md:flex-row">
+<!--add gallery-->
+<form action="/add_gallery" method="post" enctype="multipart/form-data" class="max-w-4xl py-10 border border-indigo-700 mx-7 rounded-3xl flex flex-col items-center mt-12 flex-1">
+<strong class="text-2xl font-extrabold">ADD GALLERY</strong>
+
+<input type="file" accept="image/*" multiple="true" id="image-upload" name="image" class="hidden bg-indigo-700" required>
+<label for="image-upload">
+<i class="fas fa-image text-5xl mt-10"></i>
+</label>
+<button type="submit" class="h-10 w-32 bg-gradient-to-br from-indigo-700 to-purple-600 rounded-xl text-white font-extrabold mt-5">Add to GALlERY</button><br>
+<a href="/see_gallerys">
+
+<strong class="text-indigo-700">See gallerys &rarr;</strong>
+</a>
+</form>
+<!--add news-->
+<form action="/add_news" method="post" class="max-w-4xl py-10 border border-indigo-700 mx-7 rounded-3xl flex flex-col items-center mt-12  flex-1 px-7 box-border">
+<strong class="text-2xl font-extrabold">Add news</strong>
+<h1>write in the textarea</h1>
+<input type="text"  placeholder="Heading" name="head" class="hide border" required>
+<textarea placeholder="Write news" name="news" class="w-full max-w-3xl px-4 py-2 mt-4 rounded-md border border-gray-300 resize-y" required></textarea>
+<button type="submit" class="h-10 w-32 bg-gradient-to-br from-indigo-700 to-purple-600 rounded-xl text-white font-extrabold mt-5">Add to news</button><br>
+<a href="/see_news">
+
+<strong class="text-indigo-700">See news &rarr;</strong>
+</a>
+</form>
+</section>
+
+
+<section class="flex flex-col items-stretch md:flex-row">
+<!--add group-->
+<form id="add_g_c" class="max-w-4xl py-10 border border-indigo-700 mx-7 rounded-3xl flex flex-col gap-5 items-center mt-12  flex-1 px-7 box-border">
+<strong class="text-2xl font-extrabold">Add Group or Club</strong>
+<strong id="display_g_name"></strong>
+<input type="text"  title="Uppercase and lowercase and space are only allowed" placeholder="Group name *" name="g_c_name" class="hide border" required>
+<input type="password" title="Create strong password" placeholder="Group password *" name="g_c_pass" class="hide border" required>
+
+<input type="text" pattern="[A-Za-z\s]{2,50}" title="At least 2 Uppercase,lowercase and space are only allowed" placeholder="Member full name *" name="name" class="border" required>
+
+<input type="text"
+pattern="[0-8]"
+maxlength="1"
+title="Enter a number from 0 to 8"
+inputmode="numeric" placeholder="Grade *" name="grade" class="border" required>
+
+<input id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email *" name="email" class="border" required>
+
+<input type="text" placeholder="ID *" name="id" class="border" required>
+<div class="flex w-full flex-row justify-center gap-14">
+<div>
+<input type="radio" name="group_club" value="group" required class="hide"> &nbsp; &nbsp;
+<label for="group_club" class="hide font-extrabold text-xl">Group</label>
+</div>
+<div>
+<input type="radio" name="group_club" value="club" class="hide" required>  &nbsp; &nbsp;
+<label for="group_club" class="hide font-extrabold text-xl">Club</label>
+</div>
+
+</div>
+
+
+<button id="collect" class="h-10 w-32 bg-gradient-to-br from-indigo-700 to-purple-600 rounded-xl text-white font-extrabold mt-5">Add</button>
+<button type="button" id="create" class="h-10 w-32 bg-gradient-to-br from-indigo-700 to-purple-600 rounded-xl text-white font-extrabold">create group</button>
+</form>
+<p id="cheack"></p>
+<!--update group or club-->
+<form action="/update_g_c" method="post" class="max-w-4xl py-10 border border-indigo-700 mx-7 rounded-3xl flex flex-col gap-5 items-center mt-12  flex-1 px-7 box-border">
+<strong class="text-2xl font-extrabold">Update group or Club</strong>
+
+<input type="text" placeholder="Group name  *" name="g_c_name" class="border" required>
+<input type="text" placeholder=" Student's Previous ID  *"
+name="prev_id" class="border" required>
+
+<input type="text" placeholder="Member name" name="name" class="border">
+
+<input type="number" placeholder="Grade" name="grade" class="border">
+
+<input type="email" placeholder="Email" name="email" class="border">
+
+<input type="text" placeholder="new ID" name="new_id" class="border">
+
+<div class="flex w-full flex-row justify-center gap-14">
+<div>
+<input type="radio" name="group_club" value="group" required class="hide"> &nbsp; &nbsp;
+<label for="group_club" class="hide font-extrabold text-xl">Group</label>
+</div>
+<div>
+<input type="radio" name="group_club" value="club" class="hide" required>  &nbsp; &nbsp;
+<label for="group_club" class="hide font-extrabold text-xl">Club</label>
+</div>
+
+</div>
+<button type="submit" class="h-10 w-32 bg-gradient-to-br from-indigo-700 to-purple-600 rounded-xl text-white font-extrabold mt-5">Update group</button>
+</form>
+</section>
+
+
+
+<section class="flex flex-col items-stretch md:flex-row">
+<!--see group or club info-->
+
+<form class="info_form md:max-w-[47%] max-w-4xl py-10 border border-indigo-700 mx-7 rounded-3xl flex flex-col gap-5 items-center mt-12  flex-1 px-7 box-border">
+<strong class="text-2xl font-extrabold">See club or group info</strong>
+
+<input type="text" placeholder="Write the group or club name" name="g_c_name" class="border" required>
+<div>
+<input type="radio" name="group_club" value="group" required> &nbsp; &nbsp;
+<label for="group_club" class="font-extrabold text-xl">Group</label>
+</div>
+
+<div>
+<input type="radio" name="group_club" value="club" required>  &nbsp; &nbsp;
+<label for="group_club" class="font-extrabold text-xl">Club</label>
+</div>
+
+<button type="button" class="info_btn h-10 w-32 bg-gradient-to-br from-indigo-700 to-purple-600 rounded-xl text-white font-extrabold mt-5">Update club</button>
+</form>
+
+</section>
+<div class="info_table_container overflow-x-auto mx-7 mb-10  mt-10 hidden">
+  <table class="min-w-full border border-gray-300">
+    <thead class="bg-gray-100">
+      <tr>
+        
+        <th class="border border-gray-300 px-4 py-2 text-left sticky left-0 bg-white">No</th>
+        <th class="border border-gray-300 px-4 py-2 text-left">Full name</th>
+        <th class="border border-gray-300 px-4 py-2 text-left">Grade</th>
+        <th class="border border-gray-300 px-4 py-2 text-left">Email</th>
+        <th class="border border-gray-300 px-4 py-2 text-left whitespace-nowrap">Id no</th>
+      </tr>
+    </thead>
+    <tbody id="info_table_body">
+
+
+    </tbody>
+  </table>
+</div>
+
+
+<script src="js/cms.js"></script>
+</body>
+</html>
